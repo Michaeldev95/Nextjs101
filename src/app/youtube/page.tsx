@@ -1,7 +1,7 @@
-const Facebook=()=>{
+const Youtube=()=>{
     return <div>
         Welcome to Facebook
     </div>
 }
 
-export default Facebook;
+export default Youtube;
