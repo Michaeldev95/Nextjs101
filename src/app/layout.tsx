@@ -9,8 +9,9 @@ import app1 from "../styles/app1.module.css";
 
 import Header from '../component/app.header';
 import Container from 'react-bootstrap/Container'
-import BasicTable from "@/component/app.table";
+
 import Footer from "@/component/app.footer";
+import Modal1 from "@/modals/modal1";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -38,8 +39,9 @@ export default function RootLayout({
       <body>
         <Header />
         <Container>
+
           {children}
-          <BasicTable />
+          <Modal1></Modal1>
         </Container>
         <Footer />
       </body>
