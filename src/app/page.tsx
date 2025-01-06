@@ -7,7 +7,7 @@ import Link from 'next/link'
 import BasicTable from "@/component/app.table";
 import { useEffect } from "react";
 import useSWR from 'swr'
-import Modal1 from "@/modals/modal1"
+
 
 
 export default function Home() {
@@ -37,8 +37,8 @@ export default function Home() {
     <div className={app1['red']}
     ><Link href="/facebook" >Facebook</Link></div>
     <div className={app2['red']}><Link href="/youtube">Youtube</Link></div>
-    <BasicTable blogs={data}></BasicTable>
-    <Modal1></Modal1>
+    <BasicTable blogs={data?.sort((a: any, b: any) => a._id - b._id)}></BasicTable>
+
   </div>
 
 }

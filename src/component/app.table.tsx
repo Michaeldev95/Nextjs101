@@ -18,6 +18,7 @@ function BasicTable(props: IProps) {
     }
 
     const { blogs } = props
+
     console.log("check props:", props)
     console.log("check blog:", blogs)
     return (

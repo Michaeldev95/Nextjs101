@@ -12,6 +12,8 @@ import Container from 'react-bootstrap/Container'
 
 import Footer from "@/component/app.footer";
 import Modal1 from "@/modals/modal1";
+import { ToastContainer, toast } from 'react-toastify';
+
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -41,9 +43,10 @@ export default function RootLayout({
         <Container>
 
           {children}
-          <Modal1></Modal1>
+
         </Container>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   );
