@@ -1,8 +1,12 @@
+'use client'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Modal1 from '@/modals/modal1';
 import React, { MouseEvent, useState } from 'react';
-import { Modal } from 'react-bootstrap';
+
+import ModalEdit from '@/modals/modalEdit';
+import ModalDelete from '@/modals/modalDelete';
+import Link from 'next/link';
 
 interface IProps {
     blogs: IBlog[]
@@ -11,16 +15,40 @@ interface IProps {
 
 function BasicTable(props: IProps) {
 
+
+    const [blog, setBlog] = useState<IBlog | null>(null)
     const [showModal, setShowModal] = useState<Boolean>(false)
+    const [showModalEdit, setShowModalEdit] = useState<Boolean>(false)
+    const [showDelete, setShowDelete] = useState<Boolean>(false);
+
+    const handleDelete = () => {
+        setShowDelete(true)
+
+    }
 
     const handleClick = () => {
         setShowModal(true)
     }
 
+    const handleEdit = () => {
+        setShowModalEdit(true)
+
+    }
+
+
+
     const { blogs } = props
 
     console.log("check props:", props)
     console.log("check blog:", blogs)
+
+
+
+
+
+
+
+
     return (
 
         <div>
@@ -44,20 +72,29 @@ function BasicTable(props: IProps) {
                 </tr>
 
 
-                {blogs?.map(blog => {
+                {blogs?.map(item => {
                     return (
-                        <tr key={blog.id}>
+                        <tr key={item.id}>
 
-                            <td>{blog.id}</td>
+                            <td>{item.id}</td>
 
-                            <td>{blog.name}</td>
+                            <td>{item.name}</td>
 
-                            <td>{blog.grade}</td>
+                            <td>{item.grade}</td>
 
                             <td>
-                                <Button variant="primary" className='mx-3'>Edit</Button>
-                                <Button variant="primary" className='mx-3'>View</Button>
-                                <Button variant="primary" className='mx-3'>Delete</Button>
+                                <Button variant="primary" className='mx-3' onClick={() => {
+                                    setBlog(item)
+                                    handleEdit()
+                                }
+
+
+                                }>Edit</Button>
+                                <Button variant="primary" className='mx-3'> <Link href={`/${item.id}`}>View</Link></Button>
+                                <Button variant="primary" className='mx-3' onClick={() => {
+                                    setBlog(item)
+                                    handleDelete()
+                                }}>Delete</Button>
                             </td>
 
                         </tr>)
@@ -68,6 +105,20 @@ function BasicTable(props: IProps) {
             <Modal1
                 showModal={showModal}
                 setShowModal={setShowModal}></Modal1>
+            <ModalEdit
+                blog={blog}
+                setBlog={setBlog}
+                showModalEdit={showModalEdit}
+                setShowModalEdit={setShowModalEdit}
+            ></ModalEdit>
+            <ModalDelete
+                blog={blog}
+                setBlog={setBlog}
+                showDelete={showDelete}
+                setShowDelete={setShowDelete}
+            >
+
+            </ModalDelete>
         </div >
 
     );
