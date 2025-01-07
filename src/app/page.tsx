@@ -1,12 +1,10 @@
-
 'use client'
-import { Container } from "postcss"
 import app1 from "../styles/app1.module.css"
 import app2 from "../styles/app2.module.css"
 import Link from 'next/link'
-import BasicTable from "@/component/app.table";
-import { useEffect } from "react";
+import BasicTable from "@/component/app.table"
 import useSWR from 'swr'
+import type { Metadata } from 'next'
 
 
 
@@ -42,3 +40,4 @@ export default function Home() {
   </div>
 
 }
+
